@@ -7,79 +7,13 @@ import {useMediaQuery} from 'usehooks-ts'
 import MouseFollower from './MouseFollower'
 import VideoList from './VideoList'
 
-const videos = [
-  {
-    _id: 0,
-    title: 'Ari Lennox | Get Close 1',
-    coverImage: 'https://eringwesley.com/uploads/Ari_Lennox_Get_Close_1_8961ce5727_99909a8b5f.jpg',
-    video: 'https://eringwesley.com/uploads/Ari_Lennox_Get_Close_1_410dd74c0a_981c905ff8.mp4#t=0.5',
-  },
-  {
-    _id: 1,
-    title: '6lack Umi | Says 1',
-    coverImage: 'https://eringwesley.com/uploads/6lack_Umi_Says_1_1_e7ee64b92b.jpg',
-    video: 'https://eringwesley.com/uploads/6lack_Umi_Says_1_9f7f439b34_b2ba046679.mp4#t=0.5',
-  },
-  {
-    _id: 2,
-    title: 'Ari Lennox | Get Close 2',
-    coverImage: 'https://eringwesley.com/uploads/Ari_Lennox_Get_Close_2_1_9b5d788256.jpg',
-    video: 'https://eringwesley.com/uploads/Ari_Lennox_Get_Close_2_346026a2d1_85a1bac50b.mp4#t=0.5',
-  },
-  {
-    _id: 3,
-    title: '6lack Umi | Says 2',
-    coverImage: 'https://eringwesley.com/uploads/6lack_Umi_Says_2_2_ea0d7fa34e.jpg',
-    video: 'https://eringwesley.com/uploads/6lack_Umi_Says_2_f946c38fe0_932a3eef36.mp4#t=0.5',
-  },
-  {
-    _id: 4,
-    title: 'Ari Lennox | Get Close 3',
-    coverImage: 'https://eringwesley.com/uploads/Ari_Lennox_Get_Close_3_1_2587eace72.jpg',
-    video: 'https://eringwesley.com/uploads/Ari_Lennox_Get_Close_3_535a3c78c3_0f78155317.mp4#t=0.5',
-  },
-]
-
-// const videos = [
-//   {
-//     _id: 0,
-//     title: 'Pergunta pra folhinha',
-//     coverImage:
-//       'https://cdn.prod.website-files.com/6656ae067079c1811b0e5513/6656b664b8a63217877bb348_folhinha.png',
-//     video: 'https://www.youtube.com/watch?v=PfK22JsL0jM'
-//   },
-//   {
-//     _id: 1,
-//     title: 'Lab Vivo de Ideias',
-//     coverImage:
-//       'https://cdn.prod.website-files.com/6656ae067079c1811b0e5513/669c28a534416a0103bba113_Screenshot%202024-07-20%20at%2018.13.21.png',
-//     video: 'https://vimeo.com/389322122'
-//   },
-//   {
-//     _id: 2,
-//     title: 'Make it Happn',
-//     coverImage:
-//       'https://cdn.prod.website-files.com/6656ae067079c1811b0e5513/669c045add02ee5e3dded2a6_Screenshot%202024-07-20%20at%2015.37.54_1.png',
-//     video: 'https://www.youtube.com/watch?v=MT_z48PAXgY'
-//   },
-//   {
-//     _id: 3,
-//     title: 'Famílias',
-//     coverImage:
-//       'https://cdn.prod.website-files.com/6656ae067079c1811b0e5513/66cd03e32aaee865981eb487_Screenshot%202024-08-26%20at%2018.40.50_1.png',
-//     video: 'https://vimeo.com/291951622'
-//   },
-//   {
-//     _id: 4,
-//     title: 'Cartografia Negra',
-//     coverImage:
-//       'https://cdn.prod.website-files.com/6656ae067079c1811b0e5513/66d8b5d31598bd790cebec9d_Screenshot%202024-09-04%20at%2016.31.16_1.png',
-//     video: 'https://www.youtube.com/watch?v=IBKsXJH4y40'
-//   }
-// ];
-
 const delay = 7000
-export default function VideoHero() {
+
+type VideoHeroProps = {
+  videos
+}
+
+export default function VideoHero({videos}: VideoHeroProps) {
   const isMobile = useMediaQuery('(max-width: 48rem')
 
   const [mouseIsOverList, setMouseIsOverList] = useState(false)
@@ -328,7 +262,7 @@ export default function VideoHero() {
         )}
       </AnimatePresence>
       {/* Gradient */}
-      <div className="absolute pointer-events-none top-0 left-0 w-full h-full z-[1] bg-gradient-to-b from-transparent to-black"></div>
+      <div className="absolute pointer-events-none top-0 left-0 w-full h-full z-[1] bg-gradient-to-b from-transparent to-black opacity-50"></div>
       {/* Video Wrapper */}
       <button className="w-full h-full cursor-none">
         {videos.map((video, index) => {

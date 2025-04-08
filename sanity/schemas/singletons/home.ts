@@ -63,6 +63,7 @@ export default defineType({
       title: 'Showcase projects',
       description: 'These are the projects that will appear first on your landing page.',
       type: 'array',
+      validation: (Rule) => Rule.max(5).min(5),
       of: [
         defineArrayMember({
           type: 'reference',

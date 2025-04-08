@@ -15,6 +15,10 @@ export const homePageQuery = defineQuery(`
         "slug": slug.current,
         tags,
         title,
+        videos[]{
+        ...,
+        "videoUrl": @.asset->url
+        }
       }
     },
     title,

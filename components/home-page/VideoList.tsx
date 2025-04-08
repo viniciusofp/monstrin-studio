@@ -117,7 +117,7 @@ export default function VideoList({
               <div className="absolute bottom-1 right-1 border-b-[0.75px] border-r-[0.75px] h-0 w-0 border-transparent z-[3] group-hover:w-4 group-hover:h-4 group-active:w-4 group-active:h-4 group-active:border-white transition-normal duration-500 ease-out group-hover:border-white"></div>
               {/* Backdrop Blur */}
               <div
-                className="absolute top-0 right-0 transition duration-[1] h-full backdrop-blur-md z-[3] w-full group-hover:backdrop-blur-none opacity-75 brightness-110"
+                className="absolute top-0 right-0 transition duration-[1] h-full backdrop-blur-sm z-[3] w-full group-hover:backdrop-blur-none opacity-50 brightness-110"
                 style={
                   index === current
                     ? {

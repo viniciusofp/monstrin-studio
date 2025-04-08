@@ -56,6 +56,23 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
+      name: 'videos',
+      type: 'array',
+      of: [
+        {
+          type: 'file',
+          options: {accept: 'video/*'},
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alt',
+              type: 'string',
+            },
+          ],
+        },
+      ],
+    }),
+    defineField({
       name: 'coverImage',
       title: 'Cover Image',
       description:
@@ -80,15 +97,6 @@ export default defineType({
       name: 'site',
       title: 'Site',
       type: 'url',
-    }),
-    defineField({
-      name: 'tags',
-      title: 'Tags',
-      type: 'array',
-      of: [{type: 'string'}],
-      options: {
-        layout: 'tags',
-      },
     }),
     defineField({
       name: 'description',

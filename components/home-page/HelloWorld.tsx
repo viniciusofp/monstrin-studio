@@ -19,7 +19,7 @@ export default function HelloWorld(props: HelloWorldProps) {
   return (
     <section
       ref={helloWorld}
-      className="relative z-2 bg-black text-white min-h-[100svh] grid lg:flex gap-8 px-32"
+      className="relative z-2 bg-black text-white min-h-[100dvh] grid lg:flex gap-8 px-32"
     >
       <motion.h1
         className="py-12 lg:sticky top-1/2 -translate-y-1/2 basis-1/3 font-extrabold text-6xl h-min"

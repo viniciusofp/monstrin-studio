@@ -206,7 +206,7 @@ export default function VideoHero({videos}: VideoHeroProps) {
 
   return (
     <div
-      className="bg-black w-full h-svh relative overflow-hidden"
+      className="bg-black w-full h-dvh relative overflow-hidden"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
@@ -288,7 +288,7 @@ export default function VideoHero({videos}: VideoHeroProps) {
                   className={cn(
                     'max-w-3xl max-h-[calc(9/16*48rem)] w-[75svw] h-[calc(9/16*75svw)]  top-1/2 left-1/2 -translate-x-1/2  relative rounded-[1vw] overflow-hidden transition-all duration-500',
                     play
-                      ? 'w-full h-svh max-w-full max-h-full rounded-none -translate-y-1/2'
+                      ? 'w-full h-dvh max-w-full max-h-full rounded-none -translate-y-1/2'
                       : ' -translate-y-[calc(50%+6vw)]',
                   )}
                 >

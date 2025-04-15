@@ -103,31 +103,31 @@ export default function VideoList({
                   : {border: 'none'}
               }
             ></div>
-            <div className="w-[calc(100%+4px)] h-2 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full z-[3] flex justify-evenly border-t-2 border-black">
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
+            <div className="w-[calc(100%+4px)] h-2 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full z-[3] flex justify-evenly border-t-2 border-[#503d31]">
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
             </div>
-            <div className="w-[calc(100%+4px)] h-2 absolute bottom-0 left-1/2 -translate-x-1/2 z-[3] flex justify-evenly border-b-2 border-black">
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
-              <div className="h-full w-[10%] shadow-md bg-black"></div>
+            <div className="w-[calc(100%+4px)] h-2 absolute bottom-0 left-1/2 -translate-x-1/2 z-[3] flex justify-evenly border-b-2 border-[#503d31]">
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
+              <div className="h-full w-[10%] shadow-md bg-[#503d31]"></div>
             </div>
 
             {/* Button */}
             <button
               ref={(el) => (thumbRefs.current[index] = el!) as any}
-              className={`w-[calc(16/36*100vw)] h-[calc(9/36*100vw)] sm:w-[calc(16/64*100vw)] sm:h-[calc(9/64*100vw)] md:w-[calc(367/1920*100vw)] md:h-[calc(196/1920*100vw)] relative transition-[padding,margin] border-2 border-x-4 border-black bg-black duration-500 ease-out overflow-hidden group hover:p-3 -mx-0.5 hover:mx-0 cursor-pointer ${
+              className={`w-[calc(16/36*100vw)] h-[calc(9/36*100vw)] sm:w-[calc(16/64*100vw)] sm:h-[calc(9/64*100vw)] md:w-[calc(367/1920*100vw)] md:h-[calc(196/1920*100vw)] relative transition-[padding,margin] border-2 border-x-4 border-[#503d31] bg-[#503d31] duration-500 ease-out overflow-hidden group hover:p-3 -mx-0.5 hover:mx-0 cursor-pointer ${
                 current === index && 'border-amber-300 hover:border-4'
               }`}
             >

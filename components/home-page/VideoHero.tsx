@@ -206,7 +206,7 @@ export default function VideoHero({videos}: VideoHeroProps) {
 
   return (
     <div
-      className="bg-white w-full h-svh relative overflow-hidden"
+      className="bg-black w-full h-svh relative overflow-hidden"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}

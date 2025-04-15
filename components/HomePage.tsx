@@ -65,8 +65,8 @@ export function HomePage({data}: HomePageProps) {
         <h1 className="font-extrabold text-4xl lg:text-8xl">monstrin studio</h1>
       </section>
       <HelloWorld />
-      <div className="h-[200svh]">
-        <motion.section className=" snap-start sticky top-0 z-0 h-screen w-full bg-purple-500 flex items-center justify-center text-white text-4xl">
+      <div className="h-[200dvh]">
+        <motion.section className=" snap-start sticky top-0 z-0 h-screen w-full flex items-center justify-center text-white text-4xl">
           <VideoHero videos={videos} />
         </motion.section>
       </div>

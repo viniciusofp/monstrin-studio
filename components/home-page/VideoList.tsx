@@ -1,5 +1,6 @@
 'use client'
 
+import {cn} from '@/lib/utils'
 import {AnimatePresence, motion} from 'motion/react'
 import {useMemo, useRef} from 'react'
 import {useWindowSize} from 'usehooks-ts'
@@ -77,7 +78,7 @@ export default function VideoList({
                   animate={{opacity: 1, y: '-100%'}}
                   exit={{opacity: 0, y: '150%'}}
                   transition={{duration: 0.3, ease: 'easeIn'}}
-                  className="absolute w-full -top-1 left-0 -translate-y-full pointer-events-none text-white font-mono text-[9px] uppercase flex justify-between"
+                  className="absolute hidden w-full -top-3 left-0 -translate-y-full pointer-events-none text-white font-mono text-[9px] leading-normal uppercase lg:flex justify-between"
                 >
                   <div className="flex gap-3">
                     <p>0{index + 1}</p>
@@ -102,12 +103,32 @@ export default function VideoList({
                   : {border: 'none'}
               }
             ></div>
+            <div className="w-[calc(100%+4px)] h-2 absolute top-0 left-1/2 -translate-x-1/2 -translate-y-full z-[3] flex justify-evenly border-t-2 border-black">
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+            </div>
+            <div className="w-[calc(100%+4px)] h-2 absolute bottom-0 left-1/2 -translate-x-1/2 z-[3] flex justify-evenly border-b-2 border-black">
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+              <div className="h-full w-[10%] shadow-md bg-black"></div>
+            </div>
 
             {/* Button */}
             <button
               ref={(el) => (thumbRefs.current[index] = el!) as any}
-              className={`w-[calc(16/36*100vw)] h-[calc(9/36*100vw)] sm:w-[calc(16/64*100vw)] sm:h-[calc(9/64*100vw)] md:w-[calc(367/1920*100vw)] md:h-[calc(196/1920*100vw)] relative transition-[padding,margin] border-amber-300 duration-500 ease-out overflow-hidden group hover:p-3 mx-0.5 hover:mx-2 cursor-none ${
-                current === index && 'border-2'
+              className={`w-[calc(16/36*100vw)] h-[calc(9/36*100vw)] sm:w-[calc(16/64*100vw)] sm:h-[calc(9/64*100vw)] md:w-[calc(367/1920*100vw)] md:h-[calc(196/1920*100vw)] relative transition-[padding,margin] border-2 border-x-4 border-black bg-black duration-500 ease-out overflow-hidden group hover:p-3 -mx-0.5 hover:mx-0 cursor-pointer ${
+                current === index && 'border-amber-300 hover:border-4'
               }`}
             >
               {/* Corners */}
@@ -117,7 +138,10 @@ export default function VideoList({
               <div className="absolute bottom-1 right-1 border-b-[0.75px] border-r-[0.75px] h-0 w-0 border-transparent z-[3] group-hover:w-4 group-hover:h-4 group-active:w-4 group-active:h-4 group-active:border-white transition-normal duration-500 ease-out group-hover:border-white"></div>
               {/* Backdrop Blur */}
               <div
-                className="absolute top-0 right-0 transition duration-[1] h-full backdrop-blur-sm z-[3] w-full group-hover:backdrop-blur-none opacity-50 brightness-110"
+                className={cn(
+                  'absolute top-0 right-0 transition duration-[1] h-full z-[3] w-full group-hover:backdrop-blur-none opacity-100 brightness-110',
+                  current === index && ' backdrop-blur-sm',
+                )}
                 style={
                   index === current
                     ? {

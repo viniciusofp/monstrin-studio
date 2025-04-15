@@ -1,32 +1,32 @@
-'use client';
+'use client'
 
-import { Pause, Play, SquareArrowUpRight } from 'lucide-react';
-import { AnimatePresence, motion } from 'motion/react';
-import { useState, useEffect } from 'react';
+import {Pause, Play, SquareArrowUpRight} from 'lucide-react'
+import {AnimatePresence, motion} from 'motion/react'
+import {useEffect, useState} from 'react'
 
 type MouseFollowerProps = {
-  isPlaying: boolean;
-  mouseIsOverList: boolean;
-  currentVideoTime: number;
-  isMobile: boolean;
-};
+  isPlaying: boolean
+  mouseIsOverList: boolean
+  currentVideoTime: number
+  isMobile: boolean
+}
 
 export default function MouseFollower({
   isPlaying,
   mouseIsOverList,
   currentVideoTime,
-  isMobile
+  isMobile,
 }: MouseFollowerProps) {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({x: 0, y: 0})
 
   useEffect(() => {
     const handleMouseMove = (e: any) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-    };
+      setPosition({x: e.clientX, y: e.clientY})
+    }
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
 
   return (
     <>
@@ -37,17 +37,17 @@ export default function MouseFollower({
             !isMobile
               ? {
                   left: position.x,
-                  top: position.y
+                  top: position.y,
                 }
               : {}
           }
         >
           <AnimatePresence>
             <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="text-white text-[8px] uppercase font-mono text-center"
+              initial={{scale: 0, opacity: 0}}
+              animate={{scale: 1, opacity: 1}}
+              exit={{opacity: 0}}
+              className="text-white text-[8px] uppercase font-mono text-center leading-normal"
             >
               <div className="grid gap-0.5">
                 <SquareArrowUpRight className="size-4 mx-auto" />
@@ -64,17 +64,17 @@ export default function MouseFollower({
             !isMobile
               ? {
                   left: position.x,
-                  top: position.y
+                  top: position.y,
                 }
               : {}
           }
         >
           <AnimatePresence>
             <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="text-white text-[8px] uppercase font-mono text-center"
+              initial={{scale: 0, opacity: 0}}
+              animate={{scale: 1, opacity: 1}}
+              exit={{opacity: 0}}
+              className="text-white text-[8px] uppercase font-mono text-center leading-normal"
             >
               <div className="grid gap-0.5">
                 Parar
@@ -95,17 +95,17 @@ export default function MouseFollower({
             !isMobile
               ? {
                   left: position.x,
-                  top: position.y
+                  top: position.y,
                 }
               : {}
           }
         >
           <AnimatePresence>
             <motion.div
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="text-white text-[8px] uppercase font-mono text-center"
+              initial={{scale: 0, opacity: 0}}
+              animate={{scale: 1, opacity: 1}}
+              exit={{opacity: 0}}
+              className="text-white text-[8px] uppercase font-mono text-center leading-normal"
             >
               <div className="grid gap-0.5">
                 Tocar
@@ -120,5 +120,5 @@ export default function MouseFollower({
         </div>
       )}
     </>
-  );
+  )
 }

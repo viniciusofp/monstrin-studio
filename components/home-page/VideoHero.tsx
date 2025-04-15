@@ -1,5 +1,6 @@
 'use client'
 
+import {cn} from '@/lib/utils'
 import {AnimatePresence, motion} from 'motion/react'
 import {useEffect, useMemo, useRef, useState} from 'react'
 import ReactPlayer from 'react-player'
@@ -16,8 +17,10 @@ type VideoHeroProps = {
 export default function VideoHero({videos}: VideoHeroProps) {
   const isMobile = useMediaQuery('(max-width: 48rem')
 
+  const [showMouseFollower, setShowMouseFollower] = useState(false)
+
   const [mouseIsOverList, setMouseIsOverList] = useState(false)
-  const [play, setPlay] = useState(true)
+  const [play, setPlay] = useState(false)
   const [wasPlaying, setWasPlaying] = useState(false)
 
   const [value, setValue] = useState(0)
@@ -203,11 +206,15 @@ export default function VideoHero({videos}: VideoHeroProps) {
 
   return (
     <div
-      className="bg-gray-950 w-full h-svh relative [&_*]cursor-none overflow-hidden"
+      className="bg-white w-full h-svh relative overflow-hidden"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
-      onMouseLeave={() => setPlay(false)}
+      onMouseLeave={() => {
+        // setPlay(false)
+        setShowMouseFollower(false)
+      }}
+      onMouseEnter={() => setShowMouseFollower(true)}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -230,12 +237,14 @@ export default function VideoHero({videos}: VideoHeroProps) {
           <p>{JSON.stringify(play)}</p>
         </div>
       )}
-      <MouseFollower
-        isPlaying={play}
-        mouseIsOverList={mouseIsOverList}
-        currentVideoTime={currentVideoTime}
-        isMobile={isMobile}
-      />
+      {showMouseFollower && (
+        <MouseFollower
+          isPlaying={play}
+          mouseIsOverList={mouseIsOverList}
+          currentVideoTime={currentVideoTime}
+          isMobile={isMobile}
+        />
+      )}
       <AnimatePresence>
         {!play && (
           <motion.h1
@@ -243,7 +252,7 @@ export default function VideoHero({videos}: VideoHeroProps) {
             animate={{opacity: 1, width: 'initial'}}
             exit={{opacity: 1, height: 0}}
             transition={{duration: 0.15, ease: 'easeOut'}}
-            className="select-none absolute top-1/2 left-1/2 overflow-hidden -translate-x-1/2 -translate-y-1/2 -mt-[calc(((100vw/5*9/7)-5rem))] md:-mt-[calc(((100vw/5*9/16)-3.5rem))] z-[2] uppercase font-bold text-[5vw] md:text-[3.6vw] bg-amber-300 w-max px-8 whitespace-nowrap"
+            className="select-none absolute top-1/2 left-1/2 overflow-hidden -translate-x-1/2 -translate-y-[calc(50%+6vw)]  z-[2] uppercase font-bold text-[5vw] md:text-[3.6vw] bg-amber-300 w-max px-8 whitespace-nowrap"
           >
             <AnimatePresence>
               {!play && (
@@ -261,10 +270,8 @@ export default function VideoHero({videos}: VideoHeroProps) {
           </motion.h1>
         )}
       </AnimatePresence>
-      {/* Gradient */}
-      <div className="absolute pointer-events-none top-0 left-0 w-full h-full z-[1] bg-gradient-to-b from-transparent to-black opacity-50"></div>
       {/* Video Wrapper */}
-      <button className="w-full h-full cursor-none">
+      <button className="w-full h-full cursor-pointer">
         {videos.map((video, index) => {
           return (
             <AnimatePresence key={video._id + 'video'}>
@@ -273,11 +280,18 @@ export default function VideoHero({videos}: VideoHeroProps) {
                   // setWasPlaying(play);
                   // setPlay(false);
                 }}
-                className={`w-full h-full top-0 left-0 absolute transition duration-150 mix-blend-screen ${
+                className={`w-full h-full top-0 left-0 absolute transition duration-150 ${
                   index === current ? 'opacity-100' : 'opacity-0'
                 }`}
               >
-                <div className="w-full h-full relative">
+                <div
+                  className={cn(
+                    'max-w-3xl max-h-[calc(9/16*48rem)] w-[75svw] h-[calc(9/16*75svw)]  top-1/2 left-1/2 -translate-x-1/2  relative rounded-[1vw] overflow-hidden transition-all duration-500',
+                    play
+                      ? 'w-full h-svh max-w-full max-h-full rounded-none -translate-y-1/2'
+                      : ' -translate-y-[calc(50%+6vw)]',
+                  )}
+                >
                   <ReactPlayer
                     ref={(el) => (videoRefs.current[index] = el!) as any}
                     playsinline
@@ -303,16 +317,27 @@ export default function VideoHero({videos}: VideoHeroProps) {
         })}
       </button>
       {/* Video List */}
-
-      <VideoList
-        videos={videos}
-        current={current}
-        currentTime={value}
-        currentVideoTime={currentVideoTime}
-        setMouseIsOverList={setMouseIsOverList}
-        delay={delay}
-        isMobile={isMobile}
-      />
+      <AnimatePresence>
+        {!play && (
+          <motion.div
+            initial={{y: 200}}
+            animate={{y: 0}}
+            exit={{y: 200}}
+            transition={{delay: 0.3, bounce: 0.5}}
+            className={cn('')}
+          >
+            <VideoList
+              videos={videos}
+              current={current}
+              currentTime={value}
+              currentVideoTime={currentVideoTime}
+              setMouseIsOverList={setMouseIsOverList}
+              delay={delay}
+              isMobile={isMobile}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

@@ -1,5 +1,12 @@
 import './globals.css'
-import {DM_Sans, Geist_Mono, IBM_Plex_Mono, Inter, PT_Serif} from 'next/font/google'
+import {
+  Bricolage_Grotesque,
+  DM_Sans,
+  Geist_Mono,
+  IBM_Plex_Mono,
+  Inter,
+  PT_Serif,
+} from 'next/font/google'
 
 const serif = PT_Serif({
   variable: '--font-serif',
@@ -7,7 +14,7 @@ const serif = PT_Serif({
   subsets: ['latin'],
   weight: ['400', '700'],
 })
-const sans = DM_Sans({
+const sans = Bricolage_Grotesque({
   variable: '--font-sans',
   subsets: ['latin'],
   // @todo: understand why extrabold (800) isn't being respected when explicitly specified in this weight array
@@ -22,7 +29,7 @@ const mono = Geist_Mono({
 export default async function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en" className={`${mono.variable} ${sans.variable} ${serif.variable}`}>
-      <body className="max-w-screen overflow-x-hidden antialiased">{children}</body>
+      <body className="max-w-screen  antialiased snap-y snap-mandatory">{children}</body>
     </html>
   )
 }

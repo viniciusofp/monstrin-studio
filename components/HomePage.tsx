@@ -62,7 +62,7 @@ export function HomePage({data}: HomePageProps) {
   return (
     <ReactLenis root className="">
       <section className="sticky top-0 h-screen w-full flex items-center justify-center bg-gray-900 text-white">
-        <h1 className="font-extrabold text-8xl">monstrin studio</h1>
+        <h1 className="font-extrabold text-4xl lg:text-8xl">monstrin studio</h1>
       </section>
       <HelloWorld />
       <div className="h-[200svh]">
